@@ -10,7 +10,7 @@ No account, database, Codex or ChatGPT installation is required. This repository
 
 *Actual application screenshot using the included [16-atom demonstration structure](examples/structures/molecules.POSCAR). All README images use synthetic examples, not private research data.*
 
-[简体中文](README.zh-CN.md) · [Quick start](#quick-start) · [Agent skill](#use-with-an-agent-skill) · [Examples](#try-the-examples) · [Measurements](#measure-distances-and-angles) · [Formats](#supported-formats) · [Privacy](#privacy-and-local-links) · [Troubleshooting](#troubleshooting)
+[Quick start](#quick-start) · [Agent skill](#use-with-an-agent-skill) · [Examples](#try-the-examples) · [Measurements](#measure-distances-and-angles) · [Formats](#supported-formats) · [Privacy](#privacy-and-local-links) · [Troubleshooting](#troubleshooting)
 
 ## Why it fits agent workflows
 

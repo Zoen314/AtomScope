@@ -1,6 +1,6 @@
 ---
 name: view-atom-structure
-description: Generate a clickable local AtomScope viewer link for POSCAR, CONTCAR or LAMMPS atomic data files. Use when asked to show, open, preview or visualize an atomistic structure or simulation box, including 看看盒子、打开 POSCAR、可视化 lmp or 随机选一帧. Not for trajectory playback, structure editing or publication image rendering.
+description: Generate a clickable local AtomScope viewer link for POSCAR, CONTCAR or LAMMPS atomic data files. Use when asked to show, open, preview or visualize an atomistic structure or simulation box, including choosing an arbitrary supported snapshot. Not for trajectory playback, structure editing or publication image rendering.
 ---
 
 # View an atomic structure locally
@@ -38,7 +38,7 @@ node --import tsx scripts/make-view-link.ts tests/fixtures/water.lmp --type-map 
 
 ## Deliver and verify
 
-Return the URL as a Markdown link labelled **Open atomic structure** (or **打开原子结构**), followed by a concise verified filename/format summary. Add atom count, composition and cell dimensions only if checked from the parsed file. Omit absolute source paths unless needed to disambiguate.
+Return the URL as a Markdown link labelled **Open atomic structure**, followed by a concise verified filename/format summary. Add atom count, composition and cell dimensions only if checked from the parsed file. Omit absolute source paths unless needed to disambiguate.
 
 The CLI checks service availability, not successful WebGL rendering. If browser access is available, check the loaded structure; otherwise say the link was generated without claiming visual verification. For a reported boundary regression or unwrapped structure, verify wrapped atoms, shortest-image bonds and matching short segments on opposite crossed faces/edges/corners. Long rays or one-sided segments are display-regression candidates, not proof of missing atoms.
 
