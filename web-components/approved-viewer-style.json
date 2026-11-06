@@ -1,0 +1,48 @@
+{
+  "profile": "atomscope-soft-junctions-v1",
+  "componentAssetVersionAtApproval": "20261106-approved-soft-bond-junctions",
+  "basePaletteProfile": "atomscope-vesta-semi-gloss-v1",
+  "renderDefaults": {
+    "showImageAtoms": false,
+    "atomRadius": 0.8,
+    "bondThickness": 0.1,
+    "background": "#ffffff",
+    "cellColor": "#222222",
+    "cellWidth": 1,
+    "projection": "orthographic",
+    "cameraDirection": [0.55, 0.3, 1],
+    "ambientLight": 0.72,
+    "keyLight": 2.4,
+    "diffuse": 0.78,
+    "specularLinear": 0.035,
+    "shininess": 65,
+    "bondAmbientFill": 0.42,
+    "bondDiffuse": 0.68,
+    "bondOcclusionWeight": 0.25,
+    "occlusion": {
+      "radius": 0.45,
+      "thickness": 0.4,
+      "strength": 0.42,
+      "samples": 16,
+      "resolutionScale": 0.75,
+      "denoiseRadius": 2
+    },
+    "sphereSegments": 40,
+    "cylinderSegments": 24
+  },
+  "elementColors": {
+    "P": "#c19cc3",
+    "O": "#ff0300",
+    "H": "#ffcccc"
+  },
+  "displayRadiiAngstrom": {
+    "P": 0.44,
+    "O": 0.296,
+    "H": 0.184
+  },
+  "cameraLights": [
+    { "direction": [-0.75, 1.1, 1.55], "intensity": 2.4 },
+    { "direction": [1, 0.15, 1], "intensity": 0.912 },
+    { "direction": [0.25, 0.8, -0.45], "intensity": 0.576 }
+  ]
+}

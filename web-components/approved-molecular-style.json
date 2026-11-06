@@ -1,0 +1,23 @@
+{
+  "profile": "atomscope-vesta-semi-gloss-v1",
+  "elements": {
+    "P": {"radius_A": 0.44, "rgb": [0.75557, 0.61256, 0.76425]},
+    "O": {"radius_A": 0.296, "rgb": [0.99997, 0.01328, 0.0]},
+    "H": {"radius_A": 0.184, "rgb": [1.0, 0.8, 0.8]}
+  },
+  "bond_radius_A": 0.1,
+  "material": {"ambient": 0, "diffuse": 0.78, "specular": 0, "opacity": 1, "phong": 0.42, "phong_size": 65},
+  "lights": [
+    {"direction": [-0.75, 1.1, 1.55], "strength": 1.0},
+    {"direction": [1.0, 0.15, 1.0], "strength": 0.38},
+    {"direction": [0.25, 0.8, -0.45], "strength": 0.24}
+  ],
+  "ao_ambient": 0.76,
+  "direct_rescale": 0.34,
+  "quality": {"pixels": [3300, 2420], "aa": 16, "ao": 192},
+  "preview_quality": {"pixels": [900, 660], "aa": 4, "ao": 32},
+  "threads": 6,
+  "styles": {"gray_context": 0.64, "faded_context": 0.2},
+  "camera_search": {"directions": 1536, "disc_samples": 96, "refine_top": 30, "refine_samples": 768},
+  "export": {"figsize_inches": [9, 7.2], "dpi": 300, "font": "Arial"}
+}

@@ -1,0 +1,14 @@
+Measurement QA: atoms 1-2-3 and 4-5-6 are right angles; 4-5 crosses x boundary
+1.0
+10 0 0
+0 10 0
+0 0 10
+P
+6
+Cartesian
+7 5 5
+5 5 5
+5 7 5
+9.5 5 5
+0.5 5 5
+0.5 6 5
