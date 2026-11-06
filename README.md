@@ -1,6 +1,6 @@
 # AtomScope
 
-**Open a structure. Explore the cell. Measure what matters.**
+**A local-first atomistic structure viewer built for agent workflows.**
 
 A local-first, interactive viewer for **VASP POSCAR/CONTCAR** and **LAMMPS atomic data**. Inspect atoms, inferred bonds and periodic cells in your browser, with distance and angle measurements built in.
 
@@ -10,7 +10,23 @@ No account, database, Codex or ChatGPT installation is required. This repository
 
 *Actual application screenshot using the included [16-atom demonstration structure](examples/structures/molecules.POSCAR). All README images use synthetic examples, not private research data.*
 
-[Quick start](#quick-start) · [Examples](#try-the-examples) · [Measurements](#measure-distances-and-angles) · [Formats](#supported-formats) · [Privacy](#privacy-and-local-links) · [Troubleshooting](#troubleshooting)
+[简体中文](README.zh-CN.md) · [Quick start](#quick-start) · [Agent skill](#use-with-an-agent-skill) · [Examples](#try-the-examples) · [Measurements](#measure-distances-and-angles) · [Formats](#supported-formats) · [Privacy](#privacy-and-local-links) · [Troubleshooting](#troubleshooting)
+
+## Why it fits agent workflows
+
+Turn a local structure file into a clickable, interactive browser view:
+
+```text
+Ask to see a structure → Agent resolves the file → Local CLI returns a link → You inspect it
+```
+
+- **A command-line handoff:** agents can call the link generator directly, without automating a desktop application's import dialog.
+- **Human inspection in the loop:** rotate the result, inspect periodic boundaries, and measure distances or angles before deciding what to do next.
+- **Local-first operation:** no public hosting or structure-upload service is needed. The agent and viewer must have access to the same local environment.
+- **A lightweight browser interface:** open the link in a normal browser or an agent application's browser panel, where supported.
+- **Reusable instructions:** the optional skill packages file selection, metadata handling and failure checks into a repeatable workflow.
+
+AtomScope is a focused inspection tool, not a replacement for all VESTA or OVITO capabilities. A successful render is not scientific validation, and inferred bonds are not chemical bond orders. When using an agent, its own data-handling policy still applies: local rendering does not guarantee that the agent never sends file contents or links to its provider.
 
 ## What you can do
 
@@ -46,6 +62,38 @@ The first command downloads dependencies; the second creates the application and
 Open **[http://127.0.0.1:43117/](http://127.0.0.1:43117/)**. Click **Open file** or drag a supported file onto the page.
 
 For a first look, choose `examples/structures/molecules.POSCAR`. After restarting your computer, run `npm run local:viewer` again. You do not need to reinstall or rebuild unless the source or dependencies change.
+
+## Use with an agent skill
+
+The repository includes a portable, privacy-clean [view-atom-structure skill](skills/view-atom-structure/SKILL.md). It contains instructions only and calls the existing CLI; it does not change rendering, bond rules or periodic geometry. The viewer works without it.
+
+### Set up once
+
+1. Complete the [quick start](#quick-start) on the computer where you will open the links.
+2. For a one-off use, ask your agent to read `skills/view-atom-structure/SKILL.md` in this checkout and follow it. Give it the checkout location and target file; no global installation is necessary.
+3. For automatic discovery in Codex, copy the **whole** `skills/view-atom-structure` folder into your configured skills directory (`$CODEX_HOME/skills`, or `~/.codex/skills` when unset), then restart Codex. Do not overwrite an existing skill of the same name without reviewing it. See the [official skills catalog installation guidance](https://github.com/openai/skills#installing-a-skill).
+
+Copying the skill does **not** install AtomScope or its dependencies. Keep the application checkout and tell the agent where it is; the skill contains no author-specific paths, research files or hosted-site identifiers. Other agents can follow the same instructions if they have local file and shell access, but automatic skill discovery depends on the host.
+
+### Example requests
+
+```text
+Use $view-atom-structure. AtomScope is in <checkout>.
+Show me <structure-file> and return a clickable local viewer link.
+
+Open <LAMMPS-data-file> with type map 1:O,2:H and periodic boundaries ppp.
+
+Pick one supported structure from <example-folder> and show me the box.
+```
+
+The agent runs this from the application checkout, replacing the example path:
+
+```sh
+node --import tsx scripts/make-view-link.ts examples/structures/molecules.POSCAR
+node --import tsx scripts/make-view-link.ts tests/fixtures/water.lmp --type-map 1:O,2:H --pbc ppp
+```
+
+The CLI starts the loopback viewer if needed and prints one URL to stdout; warnings go to stderr. The agent returns an **Open atomic structure** link and a short verified file summary. It should not invent a LAMMPS type map, upload the structure, or alter coordinates to hide a display issue. A cloud-only agent cannot make its own `127.0.0.1` link work on your computer; run this workflow locally.
 
 ## Try the examples
 
